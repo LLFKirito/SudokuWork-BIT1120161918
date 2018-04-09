@@ -1,13 +1,9 @@
-/// <summary> 
-///	本文件实现解数独 
-/// </summary> 
-
 #include <stdio.h>
 #include <string.h>
 #include "define.h"
 #include "solve.h"
 
-/// <summary> 在数独矩阵中找到第一个待解元素的序号，找不到返回-1 </summary>
+// 在数独矩阵中找到第一个待解元素的序号，找不到返回-1
 inline int find(BOARD &board)
 {
 	for(int i=0;i<SIZE;i++) {
@@ -58,7 +54,8 @@ inline void unset(BOARD &board,const int loc)
 	board.map[r][c] = 0;
 }
 
-/// <summary> 最终返回的board已经填写好数独结果  </summary>
+
+// 传出的board已经填写好数独结果 
 void solution(BOARD &board,BOARD &backup)
 {
 	int loc = find(backup);
@@ -78,10 +75,6 @@ void solution(BOARD &board,BOARD &backup)
 
 inline void cal_board(BOARD &board)
 {
-	memset(board.row,0,sizeof(board.row));
-	memset(board.col,0,sizeof(board.col));
-	memset(board.grid,0,sizeof(board.grid));
-	
 	int num=0;
 	for(int i=0;i<9;i++) {
 		for(int j=0;j<9;j++) {
@@ -96,35 +89,38 @@ inline void cal_board(BOARD &board)
 	}
 }
 
-/// <summary> 将fp读取的题目解出 </summary> 
-void solve_sudoku(FILE *fp)
+
+void solve_sudoku( )
 {
-	FILE *fp_w;
-	fp_w = fopen("sudoku.txt","w");
-	
+	// 清除txt文件 
 	int flag=0;
 	BOARD board;
 	
-	int tmp;
-	while( ~fscanf(fp,"%d",&tmp) ) {
-		board.map[0][0] = tmp;
-		for(int j=1;j<9;j++) {
-			fscanf(fp,"%d",&board.map[0][j]);
-		}
-		for(int i=1;i<9;i++) {
-			for(int j=0;j<9;j++) {
-				fscanf(fp,"%d",&board.map[i][j]);
+	/*程序框测试*/
+	while( scanf("%d %d %d %d %d %d %d %d %d",&board.map[0][0],&board.map[0][1],&board.map[0][2],
+											&board.map[0][3],&board.map[0][4],&board.map[0][5],
+											&board.map[0][6],&board.map[0][7],&board.map[0][8]) ,
+			board.map[0][0]|board.map[0][1]|board.map[0][2]|board.map[0][3]|board.map[0][4]
+			|board.map[0][5]|board.map[0][6]|board.map[0][7]|board.map[0][8]
+	){
+		
+		for(int i=1;i<9;i++){
+			for(int j=0;j<9;j++){
+				scanf("%d",&board.map[i][j]);
 			}
 		}
+		
+		memset(board.row,0,sizeof(board.row));
+		memset(board.col,0,sizeof(board.col));
+		memset(board.grid,0,sizeof(board.grid));
 		
 		cal_board(board);
 		
 		BOARD backup = board;
 		solution(board,backup);
-		print(fp_w,board,flag);
+		print(board,flag);
 		flag=1;
 	}
+	/***********/
 	
-	fclose(fp);
-	fclose(fp_w);
 }

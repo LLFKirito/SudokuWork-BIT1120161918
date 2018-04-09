@@ -1,0 +1,40 @@
+# Project: 项目1
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = "../Source\ and\ hesder\ files/create.o" "../Source\ and\ hesder\ files/define.o" "../Source\ and\ hesder\ files/initial.o" "../Source\ and\ hesder\ files/main.o" "../Source\ and\ hesder\ files/solve.o"
+LINKOBJ  = "../Source and hesder files/create.o" "../Source and hesder files/define.o" "../Source and hesder files/initial.o" "../Source and hesder files/main.o" "../Source and hesder files/solve.o"
+LIBS     = -L"E:/2-应用程序与软件/2-编程软件-Dev C++/Dev-Cpp/MinGW64/lib" -L"E:/2-应用程序与软件/2-编程软件-Dev C++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"E:/2-应用程序与软件/2-编程软件-Dev C++/Dev-Cpp/MinGW64/include" -I"E:/2-应用程序与软件/2-编程软件-Dev C++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/2-应用程序与软件/2-编程软件-Dev C++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"E:/2-应用程序与软件/2-编程软件-Dev C++/Dev-Cpp/MinGW64/include" -I"E:/2-应用程序与软件/2-编程软件-Dev C++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/2-应用程序与软件/2-编程软件-Dev C++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"E:/2-应用程序与软件/2-编程软件-Dev C++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = sudoku.exe
+CXXFLAGS = $(CXXINCS) -g3 -Wall
+CFLAGS   = $(INCS) -g3 -Wall
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+"../Source\ and\ hesder\ files/create.o": ../Source\ and\ hesder\ files/create.cpp
+	$(CPP) -c "../Source and hesder files/create.cpp" -o "../Source and hesder files/create.o" $(CXXFLAGS)
+
+"../Source\ and\ hesder\ files/define.o": ../Source\ and\ hesder\ files/define.cpp
+	$(CPP) -c "../Source and hesder files/define.cpp" -o "../Source and hesder files/define.o" $(CXXFLAGS)
+
+"../Source\ and\ hesder\ files/initial.o": ../Source\ and\ hesder\ files/initial.cpp
+	$(CPP) -c "../Source and hesder files/initial.cpp" -o "../Source and hesder files/initial.o" $(CXXFLAGS)
+
+"../Source\ and\ hesder\ files/main.o": ../Source\ and\ hesder\ files/main.cpp
+	$(CPP) -c "../Source and hesder files/main.cpp" -o "../Source and hesder files/main.o" $(CXXFLAGS)
+
+"../Source\ and\ hesder\ files/solve.o": ../Source\ and\ hesder\ files/solve.cpp
+	$(CPP) -c "../Source and hesder files/solve.cpp" -o "../Source and hesder files/solve.o" $(CXXFLAGS)
