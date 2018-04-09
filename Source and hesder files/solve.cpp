@@ -1,9 +1,13 @@
+/// <summary> 
+///	本文件实现解数独 
+/// </summary> 
+
 #include <stdio.h>
 #include <string.h>
 #include "define.h"
 #include "solve.h"
 
-// 在数独矩阵中找到第一个待解元素的序号，找不到返回-1
+/// <summary> 在数独矩阵中找到第一个待解元素的序号，找不到返回-1 </summary>
 inline int find(BOARD &board)
 {
 	for(int i=0;i<SIZE;i++) {
@@ -54,8 +58,7 @@ inline void unset(BOARD &board,const int loc)
 	board.map[r][c] = 0;
 }
 
-
-// 传出的board已经填写好数独结果 
+/// <summary> 最终返回的board已经填写好数独结果  </summary>
 void solution(BOARD &board,BOARD &backup)
 {
 	int loc = find(backup);
@@ -75,6 +78,10 @@ void solution(BOARD &board,BOARD &backup)
 
 inline void cal_board(BOARD &board)
 {
+	memset(board.row,0,sizeof(board.row));
+	memset(board.col,0,sizeof(board.col));
+	memset(board.grid,0,sizeof(board.grid));
+	
 	int num=0;
 	for(int i=0;i<9;i++) {
 		for(int j=0;j<9;j++) {
@@ -88,7 +95,6 @@ inline void cal_board(BOARD &board)
 		}
 	}
 }
-
 
 void solve_sudoku( )
 {
@@ -109,10 +115,6 @@ void solve_sudoku( )
 				scanf("%d",&board.map[i][j]);
 			}
 		}
-		
-		memset(board.row,0,sizeof(board.row));
-		memset(board.col,0,sizeof(board.col));
-		memset(board.grid,0,sizeof(board.grid));
 		
 		cal_board(board);
 		

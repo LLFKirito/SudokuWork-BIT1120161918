@@ -1,10 +1,15 @@
+/// <summary> 
+///	本文件对外提供 create_sudoku(int n)函数，实现构造 n 个不重复数独终局,并输出。 
+/// </summary> 
+///	<comment> 
+///	学号：1120161918 
+///	(1+8)%9+1 = 1 
+///	</comment> 
+
 #include <stdio.h>
 #include "define.h"
 #include "initial.h"
 #include "create.h"
-
-// 学号：1120161918 
-// (1+8)%9+1 = 1 
 
 int shift[9] = { 0, 6, 3, 8, 5, 2, 7, 4, 1 };
 
@@ -33,7 +38,9 @@ inline void fill(int m,int n,int l,BOARD &backup,BOARD &board)
 	}
 }
 
-// 生成n个数独终局 
+///	<summary> 生成n个数独终局 </summary>
+/// <param name="n"> 需求生成数独终局的数量 </param> 
+///	<return> 1:正常生成数独终局; -1:程序执行出错 </return>
 int create_sudoku(int n)
 {
 	//	清空TXT文件；
@@ -67,7 +74,7 @@ int create_sudoku(int n)
 					count++;
 				}
 				else if(count==n) return 1;		// 正常完成命令 
-				else if(count>=n) return -1;	// 报错 
+				else if(count>=n) return -1;	// 报错:程序执行错误 
 				// 1~3行填充方案2 
 				if(count<n) {
 					fill(1,j,k,backup,board);
@@ -75,9 +82,9 @@ int create_sudoku(int n)
 					count++;
 				}
 				else if(count==n) return 1;		// 正常完成命令 
-				else if(count>=n) return -1;	// 报错 
+				else if(count>=n) return -1;	// 报错:程序执行错误 
 			}
 		}
 	}
-	return -1;
+	return -1;	// 报错:输入n已经超过能生成的最大个数,并且已经生成 290 3040组 
 }
