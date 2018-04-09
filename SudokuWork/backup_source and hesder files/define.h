@@ -1,7 +1,6 @@
 #ifndef __DIFINE__
 #define __DIFINE__
 
-
 // 数独边界大小 
 #define SIZE 9
 

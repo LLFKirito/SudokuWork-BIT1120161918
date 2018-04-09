@@ -5,6 +5,7 @@
 /// <author> ¿Ó¡÷∑Â </author> 
 ///	<student_number> 1120161918 </student_number> 
 
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <string.h>
 #include "define.h"
@@ -25,6 +26,8 @@ int main(int argc,char* argv[])
 			printf("\nWrong: The number you entered exceeds the maximun range!\n");
 		else if(num==-3)
 			printf("\nWrong: The number you entered exceeds the maximun range!\n");
+		else if(num==0)
+			printf("\nWrong: Please input correctly!\n");
 		else {
 			int examine = create_sudoku(num);
 			
