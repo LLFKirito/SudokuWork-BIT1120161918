@@ -96,23 +96,24 @@ inline void cal_board(BOARD &board)
 	}
 }
 
-void solve_sudoku( )
+/// <summary> 将fp读取的题目解出 </summary> 
+void solve_sudoku(FILE *fp)
 {
-	// 清除txt文件 
+	FILE *fp_w;
+	fp_w = fopen("sudoku.txt","w");
+	
 	int flag=0;
 	BOARD board;
 	
-	/*程序框测试*/
-	while( scanf("%d %d %d %d %d %d %d %d %d",&board.map[0][0],&board.map[0][1],&board.map[0][2],
-											&board.map[0][3],&board.map[0][4],&board.map[0][5],
-											&board.map[0][6],&board.map[0][7],&board.map[0][8]) ,
-			board.map[0][0]|board.map[0][1]|board.map[0][2]|board.map[0][3]|board.map[0][4]
-			|board.map[0][5]|board.map[0][6]|board.map[0][7]|board.map[0][8]
-	){
-		
-		for(int i=1;i<9;i++){
-			for(int j=0;j<9;j++){
-				scanf("%d",&board.map[i][j]);
+	int tmp;
+	while( ~fscanf(fp,"%d",&tmp) ) {
+		board.map[0][0] = tmp;
+		for(int j=1;j<9;j++) {
+			fscanf(fp,"%d",&board.map[0][j]);
+		}
+		for(int i=1;i<9;i++) {
+			for(int j=0;j<9;j++) {
+				fscanf(fp,"%d",&board.map[i][j]);
 			}
 		}
 		
@@ -120,9 +121,10 @@ void solve_sudoku( )
 		
 		BOARD backup = board;
 		solution(board,backup);
-		print(board,flag);
+		print(fp_w,board,flag);
 		flag=1;
 	}
-	/***********/
 	
+	fclose(fp);
+	fclose(fp_w);
 }

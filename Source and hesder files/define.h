@@ -13,11 +13,11 @@ typedef struct {
 	int grid[SIZE];		// 九宫格 
 } BOARD;
 
-// 输入读取文件 
-
+// 输入的字符变为数字 
+int change_num(char s[]); 
 
 // 输出写入文件 
-void print(BOARD board,int flag);
+void print(FILE* fp,BOARD board,int flag);
 
 
 #endif

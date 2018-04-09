@@ -12,40 +12,34 @@
 #include "create.h"
 #include "solve.h"
 
-int main()
+int main(int argc,char* argv[])
 {
 	initial_origin();
 	
-	
-	/*程序框输入测试*/
-	//char order[100];
-	int p,n;
-	while( printf("输入执行的命令:"), scanf("%d",&p) ,p ){
-		if(p==1){
-			scanf("%d",&n);
-			int examine = create_sudoku(n);
+	if( strcmp(argv[1],"-c") == 0 ) {
+		int num = change_num(argv[2]);
+		
+		if(num==-1)
+			printf("\nWrong: Please input correctly!\n");
+		else if(num==-2)
+			printf("\nWrong: The number you entered exceeds the maximun range!\n");
+		else if(num==-3)
+			printf("\nWrong: The number you entered exceeds the maximun range!\n");
+		else {
+			int examine = create_sudoku(num);
 			
 			if(examine==-1)
-				printf("\nProgram execution error: Wrong on creation of the end of sudoku\n\n");
+				printf("\nProgram Execution Error: Wrong on creation of the end of sudoku.\n");
 		}
-		
-		else if(p==2) {
-			solve_sudoku();
-		}
-		
-		printf("\n-----------------------------\n");
-		
 	}
-		
-	/***************/
-	
-	
-	
-	//	判断输入是否合法 ；
-	//	如果合法，输入记录n：
-	//		create_sudoku(n);
-	
-	
+	else if( strcmp(argv[1],"-s") == 0 ) {
+		FILE *fp;
+		fp = fopen(argv[2],"r");
+		if( fp == NULL ) {
+			printf("\nWrong: File open failed.\n");
+		}
+		solve_sudoku(fp);
+	}
 	
 	return 0;
 }
