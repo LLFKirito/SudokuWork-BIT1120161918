@@ -21,36 +21,12 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="create.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="define.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="initial.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="solve.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="create.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="define.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="initial.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="solve.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="unittest1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

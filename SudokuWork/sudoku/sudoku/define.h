@@ -1,5 +1,4 @@
-#ifndef __DIFINE__
-#define __DIFINE__
+#pragma once
 
 // 数独边界大小 
 #define SIZE 9
@@ -13,10 +12,7 @@ typedef struct {
 } BOARD;
 
 // 输入的字符变为数字 
-int change_num(char s[]); 
+int change_num(char s[]);
 
 // 输出写入文件 
-void print(FILE* fp,BOARD board,int flag);
-
-
-#endif
+void print(FILE* fp, BOARD board, int flag);

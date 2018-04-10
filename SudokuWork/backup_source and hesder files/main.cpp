@@ -15,8 +15,6 @@
 
 int main(int argc,char* argv[])
 {
-	initial_origin();
-	
 	if( strcmp(argv[1],"-c") == 0 ) {
 		int num = change_num(argv[2]);
 		
@@ -29,6 +27,10 @@ int main(int argc,char* argv[])
 		else if(num==0)
 			printf("\nWrong: Please input correctly!\n");
 		else {
+			if(origin[0][0]==0) {
+				initial_origin();
+			}
+				
 			int examine = create_sudoku(num);
 			
 			if(examine==-1)
